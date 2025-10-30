@@ -48,27 +48,6 @@ const webLinks = [
         on: true
     },
     {
-        title: 'Match Schedule',
-        url: 'https://lauriercricketclub.com/schedule',
-        type: 'main',
-        icon: 'calendar',
-        on: true
-    },
-    {
-        title: 'Team Registration',
-        url: 'https://lauriercricketclub.com/register',
-        type: 'main',
-        icon: 'people',
-        on: true
-    },
-    {
-        title: 'Training Sessions',
-        url: 'https://lauriercricketclub.com/training',
-        type: 'main',
-        icon: 'activity',
-        on: true
-    },
-    {
         title: 'Match Results & Stats',
         url: 'https://lauriercricketclub.com/results',
         type: 'main',
@@ -76,10 +55,10 @@ const webLinks = [
         on: true
     },
     {
-        title: 'Photo Gallery',
-        url: 'https://lauriercricketclub.com/gallery',
+        title: 'Membership Fees & Payment',
+        url: 'https://lauriercricketclub.com/membership-fees',
         type: 'main',
-        icon: 'image',
+        icon: 'creditCard',
         on: true
     },
     {
@@ -112,14 +91,6 @@ const webLinks = [
         icon: 'messageCircle',
         on: true,
         customStyle: 'whatsapp'
-    },
-    {
-        title: 'Membership Fees & Payment',
-        url: 'https://lauriercricketclub.com/membership-fees',
-        type: 'custom',
-        icon: 'creditCard',
-        on: true,
-        customStyle: 'membership'
     },
     {
         title: 'Feedback & Suggestions',
