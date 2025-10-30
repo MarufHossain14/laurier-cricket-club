@@ -409,18 +409,24 @@ const Title = styled.div`
 const LinkBio = styled.div`
     display: flex;
     flex-direction: column;
+    max-width: 800px;
+    margin: 0 auto;
     h1{
-      font-size: 22px;
-      line-height: 30px;
+      font-size: 24px;
+      line-height: 1.5;
       font-weight: 500;
-      letter-spacing: -0.6px;
+      letter-spacing: -0.3px;
       padding: 0 20px;
-      @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
-        font-size: 18px;
-        line-height: 26px;
-        padding: 0 8px;
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      position: relative;
 
+      @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
+        font-size: 20px;
+        line-height: 1.4;
+        padding: 0 16px;
       }
+
       vertical-align: middle;
       span{
         font-size: 12px;
@@ -436,23 +442,48 @@ const LinkBio = styled.div`
     }
     h4{
       font-size: 18px;
-      letter-spacing: -.5px;
-      margin: 10px 0;
-      color: ${({ theme }) => theme.text.secondary};
+      letter-spacing: 0;
+      margin: 16px 0;
+      color: rgba(255, 255, 255, 0.85);
       font-weight: 500;
-        @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
-          font-size: 15px;
-          padding: 0 20px;
-          line-height: 24px;
-        }
+      line-height: 1.6;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+
+      @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
+        font-size: 16px;
+        padding: 0 24px;
+        line-height: 1.5;
+      }
+
       a{
-         font-weight: 700;
-         opacity: .8;
+         font-weight: 600;
          color: #f2a900;
          transition: all 0.3s ease;
+         text-decoration: none;
+         position: relative;
+         padding-bottom: 1px;
+
+         &::after {
+           content: '';
+           position: absolute;
+           bottom: 0;
+           left: 0;
+           width: 100%;
+           height: 1px;
+           background: #f2a900;
+           transform: scaleX(0);
+           transform-origin: right;
+           transition: transform 0.3s ease;
+         }
+
          &:hover{
-          opacity: 1;
-          text-shadow: 0 0 10px rgba(242, 169, 0, 0.3);
+           color: #ffb84d;
+           text-shadow: 0 0 15px rgba(242, 169, 0, 0.4);
+
+           &::after {
+             transform: scaleX(1);
+             transform-origin: left;
+           }
          }
       }
     }
@@ -499,7 +530,7 @@ const WebLinkWrap = styled.div`
 
 
 const LinkSection = styled.div`
-    padding: 12px 0;
+    padding: 16px 0;
     display: flex;
     margin: 0 auto;
     max-width: 400px;
@@ -517,13 +548,36 @@ const LinkSection = styled.div`
       }
     }
     h3{
-      font-size: 12px;
+      font-size: 14px;
       text-transform: uppercase;
-      letter-spacing: 4px;
-      margin-bottom: 4px;
-      color: ${({ theme }) => theme.text.secondary};
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+      color: #f2a900;
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(135deg, #f2a900, #ffb84d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+      margin: 0 auto 12px;
+      padding-bottom: 4px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #f2a900, transparent);
+      }
+
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
-        font-size: 11px;
+        font-size: 13px;
+        letter-spacing: 2.5px;
+        margin-bottom: 10px;
       }
     }
 `
