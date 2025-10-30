@@ -87,7 +87,7 @@ const webLinks = [
     // Custom Links
     {
         title: 'WhatsApp Community',
-        url: 'https://wa.me/1234567890?text=Hi%2C%20I%20want%20to%20join%20Laurier%20Cricket%20Club',
+        url: 'https://chat.whatsapp.com/GFPnL6VIpzB2Hbb6ScCvOh?mode=wwt',
         type: 'custom',
         icon: 'messageCircle',
         on: true,
