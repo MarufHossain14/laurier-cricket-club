@@ -367,8 +367,8 @@ const Title = styled.div`
       font-size: 36px;
       font-weight: 800;
       letter-spacing: 0.5px;
-      color: #f2a900;
-      text-shadow: 2px 2px 0px rgba(75, 46, 131, 0.3);
+      color: #FCC314;
+      text-shadow: 2px 2px 0px rgba(65, 24, 132, 0.3);
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
         font-size: 30px;
       }
@@ -381,14 +381,14 @@ const Title = styled.div`
       font-size: 18px;
       font-weight: 500;
       letter-spacing: 0px;
-      color: ${({ theme }) => theme.text.secondary};
-      opacity: .7;
+      color: #411884;
+      opacity: .9;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
         font-size: 15px;
         margin-top:2px;
       }
     }
-
 
     .name{
       margin-top: 8px;
@@ -535,6 +535,26 @@ const LinkSection = styled.div`
     margin: 0 auto;
     max-width: 400px;
     flex-direction: column;
+    position: relative;
+
+    && h3 {
+      color: yellow !important;
+    }    h3 {
+      font-size: 14px;
+      text-transform: uppercase;
+      margin: 8px 20px;
+      color: #FCC314;
+      font-weight: 700;
+      letter-spacing: .1em;
+    }
+
+    &:not(.social) {
+      background: linear-gradient(135deg, rgba(65, 24, 132, 0.05), rgba(252, 195, 20, 0.05));
+      border-radius: 16px;
+      padding: 16px;
+      border: 1px solid rgba(65, 24, 132, 0.1);
+    }
+
     &.social{
       max-width: max-content;
       padding: 0;
@@ -552,10 +572,9 @@ const LinkSection = styled.div`
       text-transform: uppercase;
       letter-spacing: 3px;
       margin-bottom: 12px;
-      color: #f2a900;
       font-weight: 600;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      background: linear-gradient(135deg, #f2a900, #ffb84d);
+      background: linear-gradient(135deg, #FCC314, #411884);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       position: relative;
@@ -571,7 +590,7 @@ const LinkSection = styled.div`
         transform: translateX(-50%);
         width: 40px;
         height: 2px;
-        background: linear-gradient(90deg, transparent, #f2a900, transparent);
+        background: linear-gradient(90deg, transparent, #FCC314, #411884);
       }
 
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
@@ -599,7 +618,7 @@ const LinkBox = styled.div`
     padding: 18px 20px;
     border-radius: 12px;
     margin: 8px 18px;
-    border: 1px solid ${({ theme }) => theme.bg.secondary};
+    border: 1px solid rgba(65, 24, 132, 0.2);
     flex-direction: row;
     display: flex;
     align-items: center;
@@ -610,6 +629,8 @@ const LinkBox = styled.div`
     letter-spacing: -.5px;
     position: relative;
     text-align: center;
+    background: rgba(65, 24, 132, 0.05);
+    backdrop-filter: blur(8px);
 
     &::before{
       content: "";
@@ -622,11 +643,12 @@ const LinkBox = styled.div`
       transform: scale(0.8);
     }
     &:hover{
-    transition: all 333ms ease 0s;
-    border-color: transparent;
+      transition: all 333ms ease 0s;
+      border-color: #FCC314;
+      background: rgba(65, 24, 132, 0.1);
       &::before{
         opacity: 1;
-        background: ${({ theme }) => theme.bg.hover};
+        background: linear-gradient(135deg, rgba(65, 24, 132, 0.1), rgba(252, 195, 20, 0.1));
         transition: all 333ms ease 0s;
         transform: scale(1);
       }
@@ -638,11 +660,11 @@ const LinkBox = styled.div`
 
     /* Custom styles for WhatsApp button */
     &.whatsapp{
-      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      background: linear-gradient(135deg, #FCC314 0%, #411884 100%);
       border: none;
       color: white;
       &::before{
-        background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+        background: linear-gradient(135deg, #411884 0%, #FCC314 100%);
       }
       ${LinkTitle} {
         color: white;
@@ -651,11 +673,11 @@ const LinkBox = styled.div`
 
     /* Custom styles for Membership button */
     &.membership{
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #411884 0%, #FCC314 100%);
       border: none;
       color: white;
       &::before{
-        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        background: linear-gradient(135deg, #FCC314 0%, #411884 100%);
       }
       ${LinkTitle} {
         color: white;
@@ -664,11 +686,11 @@ const LinkBox = styled.div`
 
     /* Custom styles for Feedback button */
     &.feedback{
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      background: linear-gradient(135deg, #FCC314 0%, #411884 100%);
       border: none;
       color: white;
       &::before{
-        background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+        background: linear-gradient(135deg, #411884 0%, #FCC314 100%);
       }
       ${LinkTitle} {
         color: white;
@@ -678,11 +700,12 @@ const LinkBox = styled.div`
     &.socialIcon{
       padding: 16px;
       border-radius: 50%;
-      border: none;
+      border: 1px solid rgba(65, 24, 132, 0.2);
       margin: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
+      background: rgba(65, 24, 132, 0.05);
 
       svg {
         height: 24px;
@@ -691,9 +714,13 @@ const LinkBox = styled.div`
         transition: all 0.3s ease;
       }
 
-      &:hover svg {
-        transform: scale(1.1);
-        color: #f2a900;
+      &:hover {
+        background: rgba(65, 24, 132, 0.1);
+        border-color: #FCC314;
+        svg {
+          transform: scale(1.1);
+          color: #FCC314;
+        }
       }
 
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
