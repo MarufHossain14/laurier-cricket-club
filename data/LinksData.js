@@ -42,7 +42,7 @@ const webLinks = [
     // Main Links - Cricket Club specific
     {
         title: 'Join the Club',
-        url: 'https://lauriercricketclub.com/membership',
+        url: 'https://recreation.laurierathletics.com/sports/2022/4/29/mens-cricket.aspx',
         type: 'main',
         icon: 'users',
         on: true
@@ -56,17 +56,18 @@ const webLinks = [
     },
     {
         title: 'Membership Fees & Payment',
-        url: 'https://lauriercricketclub.com/membership-fees',
+        url: 'https://secure.laurierathletics.com/ecommerce/products.php?ProductID=3232',
         type: 'main',
         icon: 'creditCard',
         on: true
     },
     {
         title: 'Contact Us',
-        url: 'https://lauriercricketclub.com/contact',
+        url: 'menscricket@laurierathletics.com',
         type: 'main',
         icon: 'mail',
-        on: true
+        on: true,
+        isEmail: true
     },
     {
         title: 'Sponsors',
@@ -94,7 +95,7 @@ const webLinks = [
     },
     {
         title: 'Feedback & Suggestions',
-        url: 'https://forms.gle/your-google-form-id',
+        url: 'https://docs.google.com/forms/d/e/1FAIpQLSePJdTEBFXKYLoM9QbHeFBWP26CGV4Zz6MFAv-QEb74J0XzYw/viewform?usp=sharing&ouid=101070476898382431907',
         type: 'custom',
         icon: 'messageSquare',
         on: true,

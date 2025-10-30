@@ -141,12 +141,68 @@ const Links = () => {
                       <h3>Club Links</h3>
                       {
                         main.map((i) => {
+                          const handleClick = (e) => {
+                            if (i.isEmail) {
+                              e.preventDefault();
+                              const width = 400;
+                              const height = 200;
+                              const left = (window.screen.width - width) / 2;
+                              const top = (window.screen.height - height) / 2;
+                              const popup = window.open('', 'Contact Us',
+                                `width=${width},height=${height},top=${top},left=${left},status=no,menubar=no,toolbar=no,resizable=no`
+                              );
+                              popup.document.write(`
+                                <html>
+                                  <head>
+                                    <title>Contact Us</title>
+                                    <style>
+                                      body {
+                                        font-family: Arial, sans-serif;
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-items: center;
+                                        justify-content: center;
+                                        height: 100vh;
+                                        margin: 0;
+                                        background-color: #f5f5f5;
+                                        color: #333;
+                                      }
+                                      .email {
+                                        margin: 20px 0;
+                                        font-size: 16px;
+                                        color: #411884;
+                                      }
+                                      .button {
+                                        padding: 10px 20px;
+                                        background-color: #411884;
+                                        color: white;
+                                        border: none;
+                                        border-radius: 5px;
+                                        cursor: pointer;
+                                        text-decoration: none;
+                                        font-size: 14px;
+                                      }
+                                      .button:hover {
+                                        background-color: #2d0f5c;
+                                      }
+                                    </style>
+                                  </head>
+                                  <body>
+                                    <div class="email">📧 ${i.url}</div>
+                                    <a href="mailto:${i.url}" class="button">Click to Send Email</a>
+                                  </body>
+                                </html>
+                              `);
+                            }
+                          };
+
                           return (
                               <StyledLinkButton
-                                href={i.url}
+                                href={i.isEmail ? "#" : i.url}
                                 key={i.title}
                                 target="_blank"
                                 rel="noreferrer"
+                                onClick={handleClick}
                               >
                                 {{
                                   icon: i.icon,

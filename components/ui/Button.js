@@ -6,6 +6,7 @@ const StyledLinkButton = forwardRef(({
   href,
   children,
   className,
+  tooltip,
   ...props
 }, ref) => {
   const buttonStyle = {
@@ -38,11 +39,29 @@ const StyledLinkButton = forwardRef(({
     color: '#111827',
   };
 
+  const tooltipStyle = {
+    position: 'absolute',
+    top: '-40px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    color: '#fff',
+    padding: '8px 12px',
+    borderRadius: '6px',
+    fontSize: '14px',
+    whiteSpace: 'nowrap',
+    opacity: 0,
+    visibility: 'hidden',
+    transition: 'all 0.3s ease',
+    zIndex: 1000,
+  };
+
   return (
     <a
       ref={ref}
       href={href}
       style={buttonStyle}
+      title={tooltip}
       onMouseEnter={(e) => {
         Object.assign(e.currentTarget.style, hoverStyle);
       }}
