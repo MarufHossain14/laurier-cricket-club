@@ -14,7 +14,7 @@ import allLinks from "../data/LinksData";
 import bioData from "../data/BioData";
 import TabsSection from "./TabsSection";
 import { socialIcons } from './SocialIcons';
-import { StyledLinkButton } from './ui/StyledLinkButton';
+import { StyledLinkButton } from './ui/Button';
 
 
 
@@ -142,14 +142,17 @@ const Links = () => {
                       {
                         install.map((i) => {
                           return (
-                              <StyledLinkButton href={i.url} key={i.title} target="_blank" rel="noreferrer">
-                                <span className="link-content">
-                                  <img src={i.icon} style={{ filter: 'var(--img)' }} alt={i.title} />
-                                  {i.title}
-                                </span>
-                                <span className="icon-container">
-                                  <HiArrowUpRight size={20} />
-                                </span>
+                              <StyledLinkButton
+                                href={i.url}
+                                key={i.title}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {{
+                                  icon: i.icon,
+                                  text: i.title,
+                                  style: { filter: 'var(--img)' }
+                                }}
                               </StyledLinkButton>
                           )
                         })
@@ -166,14 +169,17 @@ const Links = () => {
                       {
                         nfts.map((i) => {
                           return (
-                              <StyledLinkButton href={i.url} key={i.title} target="_blank" rel="noreferrer">
-                                <span className="link-content">
-                                  <img src={i.icon} style={{ filter: 'var(--img)' }} alt={i.title} />
-                                  {i.title}
-                                </span>
-                                <span className="icon-container">
-                                  <HiArrowUpRight size={20} />
-                                </span>
+                              <StyledLinkButton
+                                href={i.url}
+                                key={i.title}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {{
+                                  icon: i.icon,
+                                  text: i.title,
+                                  style: { filter: 'var(--img)' }
+                                }}
                               </StyledLinkButton>
                           )
                         })
@@ -203,14 +209,16 @@ const Links = () => {
                       {
                         others.map((i) => {
                           return (
-                              <StyledLinkButton href={i.url} key={i.title} target="_blank" rel="noreferrer">
-                                <span className="link-content">
-                                  <img src={i.icon} alt={i.title} />
-                                  {i.title}
-                                </span>
-                                <span className="icon-container">
-                                  <HiArrowUpRight size={20} />
-                                </span>
+                              <StyledLinkButton
+                                href={i.url}
+                                key={i.title}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {{
+                                  icon: i.icon,
+                                  text: i.title
+                                }}
                               </StyledLinkButton>
                           )
                         })
@@ -227,14 +235,18 @@ const Links = () => {
                       {
                         customs.map((i) => {
                           return (
-                              <StyledLinkButton href={i.url} key={i.title} target="_blank" rel="noreferrer" className={i.customStyle || ''}>
-                                <span className="link-content">
-                                  <img src={i.icon} style={{ filter: 'var(--img)' }} alt={i.title} />
-                                  {i.title}
-                                </span>
-                                <span className="icon-container">
-                                  <HiArrowUpRight size={20} />
-                                </span>
+                              <StyledLinkButton
+                                href={i.url}
+                                key={i.title}
+                                target="_blank"
+                                rel="noreferrer"
+                                className={i.customStyle || ''}
+                              >
+                                {{
+                                  icon: i.icon,
+                                  text: i.title,
+                                  style: { filter: 'var(--img)' }
+                                }}
                               </StyledLinkButton>
                           )
                         })

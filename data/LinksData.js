@@ -44,63 +44,63 @@ const webLinks = [
         title: 'Join the Club',
         url: 'https://lauriercricketclub.com/membership',
         type: 'main',
-        icon: '/cricket.svg',
+        icon: 'users',
         on: true
     },
     {
         title: 'Match Schedule',
         url: 'https://lauriercricketclub.com/schedule',
         type: 'main',
-        icon: '/calendar.svg',
+        icon: 'calendar',
         on: true
     },
     {
         title: 'Team Registration',
         url: 'https://lauriercricketclub.com/register',
         type: 'main',
-        icon: '/team.svg',
+        icon: 'people',
         on: true
     },
     {
         title: 'Training Sessions',
         url: 'https://lauriercricketclub.com/training',
         type: 'main',
-        icon: '/training.svg',
+        icon: 'activity',
         on: true
     },
     {
         title: 'Match Results & Stats',
         url: 'https://lauriercricketclub.com/results',
         type: 'main',
-        icon: '/stats.svg',
+        icon: 'barChart3',
         on: true
     },
     {
         title: 'Photo Gallery',
         url: 'https://lauriercricketclub.com/gallery',
         type: 'main',
-        icon: '/gallery.svg',
+        icon: 'image',
         on: true
     },
     {
         title: 'Contact Us',
         url: 'https://lauriercricketclub.com/contact',
         type: 'main',
-        icon: '/contact.svg',
+        icon: 'mail',
         on: true
     },
     {
         title: 'Sponsors',
         url: 'https://lauriercricketclub.com/sponsors',
         type: 'other',
-        icon: '/sponsor.svg',
+        icon: 'handshake',
         on: true
     },
     {
         title: 'Club Shop',
         url: 'https://lauriercricketclub.com/shop',
         type: 'other',
-        icon: '/shop.svg',
+        icon: 'shoppingCart',
         on: false
     },
 
@@ -109,7 +109,7 @@ const webLinks = [
         title: 'WhatsApp Community',
         url: 'https://wa.me/1234567890?text=Hi%2C%20I%20want%20to%20join%20Laurier%20Cricket%20Club',
         type: 'custom',
-        icon: '/whatsapp.svg',
+        icon: 'messageCircle',
         on: true,
         customStyle: 'whatsapp'
     },
@@ -117,7 +117,7 @@ const webLinks = [
         title: 'Membership Fees & Payment',
         url: 'https://lauriercricketclub.com/membership-fees',
         type: 'custom',
-        icon: '/payment.svg',
+        icon: 'creditCard',
         on: true,
         customStyle: 'membership'
     },
@@ -125,7 +125,7 @@ const webLinks = [
         title: 'Feedback & Suggestions',
         url: 'https://forms.gle/your-google-form-id',
         type: 'custom',
-        icon: '/feedback.svg',
+        icon: 'messageSquare',
         on: true,
         customStyle: 'feedback'
     },
