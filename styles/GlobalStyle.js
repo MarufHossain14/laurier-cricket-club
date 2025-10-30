@@ -56,7 +56,7 @@ html{
 }
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--laurier-purple);
+  background: ${({ theme }) => theme.bg.primary};
   min-height: 100vh;
   color: ${({ theme }) => theme.text.primary};
   text-rendering: optimizeLegibility;
