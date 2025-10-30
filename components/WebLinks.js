@@ -2,14 +2,14 @@
 // created by @maruf14hussain
 // date: 29 Oct, 2025
 
-import Image from "next/image";
+// import Image from "next/image"; // COMMENTED OUT - not used
 import styled from "styled-components";
-import { Button, ButtonLink, Container, StyledLink } from "./ReusableStyles";
-import Link from "next/link";
+import { Container } from "./ReusableStyles"; // Only importing Container, others not used
+// import Link from "next/link"; // COMMENTED OUT - not used
 import { HexIcon, OvalIcon } from './icons';
-import { FaChevronRight } from 'react-icons/fa';
-import { MdHome } from 'react-icons/md';
-import { HiArrowUpRight } from 'react-icons/hi2';
+// import { FaChevronRight } from 'react-icons/fa'; // COMMENTED OUT - not used
+// import { MdHome } from 'react-icons/md'; // COMMENTED OUT - not used
+// import { HiArrowUpRight } from 'react-icons/hi2'; // COMMENTED OUT - not used
 import allLinks from "../data/LinksData";
 import bioData from "../data/BioData";
 import TabsSection from "./TabsSection";
@@ -44,26 +44,31 @@ const Links = () => {
   const subdescText = subdescShow ? subdesc : `Write your own if you want or just remove me/leave blank`
 
 
-  const newProduct = bioData[0].newProduct; // checking for newProduct flag true false
-  const newProductUrl = bioData[0].newProductUrl; // get product url if available
+  // const newProduct = bioData[0].newProduct; // checking for newProduct flag true false - COMMENTED OUT
+  // const newProductUrl = bioData[0].newProductUrl; // get product url if available - COMMENTED OUT
 
 
 
-  // Collect all links filter by type - social, project, nft and other etc=
+  // Collect all links filter by type - social, main, other and custom
   // get data for social section
   const social = allLinks.filter((el) => {
     return el.type === "social" && el.on
   });
 
-  // Get data for install section
-  const install = allLinks.filter((el) => {
-    return el.type === "install" && el.on
+  // Get data for main section (cricket club main links)
+  const main = allLinks.filter((el) => {
+    return el.type === "main" && el.on
   });
 
-  // Get data for nfts
-  const nfts = allLinks.filter((el) => {
-    return el.type === "nft" && el.on
-  });
+  // // Get data for install section
+  // const install = allLinks.filter((el) => {
+  //   return el.type === "install" && el.on
+  // });
+
+  // // Get data for nfts
+  // const nfts = allLinks.filter((el) => {
+  //   return el.type === "nft" && el.on
+  // });
 
   // Get data for other section
   const others = allLinks.filter((el) => {
@@ -134,8 +139,35 @@ const Links = () => {
               </LinkSection>
               {/* Social Icon */}
 
-              {/* Install Section */}
+              {/* Main Section - Cricket Club Links */}
               {
+                main.length > 0 ?
+                    <LinkSection>
+                      <h3>Club Links</h3>
+                      {
+                        main.map((i) => {
+                          return (
+                              <StyledLinkButton
+                                href={i.url}
+                                key={i.title}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {{
+                                  icon: i.icon,
+                                  text: i.title,
+                                  style: { filter: 'var(--img)' }
+                                }}
+                              </StyledLinkButton>
+                          )
+                        })
+                      }
+                    </LinkSection> : ''
+              }
+              {/* End Main Section */}
+
+              {/* Install Section - COMMENTED OUT */}
+              {/*
                 install.length > 0 ?
                     <LinkSection>
                       <h3>{install[0].type}</h3>
@@ -158,11 +190,11 @@ const Links = () => {
                         })
                       }
                     </LinkSection> : ''
-              }
+              */}
               {/* End Install Section */}
 
-              {/* NFT Section */}
-              {
+              {/* NFT Section - COMMENTED OUT */}
+              {/*
                 nfts.length > 0 ?
                     <LinkSection>
                       <h3>{nfts[0].type}s</h3>
@@ -186,7 +218,7 @@ const Links = () => {
                       }
                     </LinkSection>
                     : ''
-              }
+              */}
               {/* End NFT Section */}
 
               {/* Other Section */}
@@ -194,9 +226,11 @@ const Links = () => {
                 others.length > 0 ?
                     <LinkSection>
                       <h3>{others[0].type}</h3>
+                      {/* New Product Section*/}
                       {/* BioData.js > newProduct == true */}
                       {/* New Section will render once newProduct == true */}
-                      {(newProduct) ? <NewSection>
+                      {/*
+                      (newProduct) ? <NewSection>
                         <a href={newProductUrl} target="_blank" rel="noreferrer">
                           <img
                               src={'/newproduct.png'}
@@ -204,8 +238,8 @@ const Links = () => {
                           />
                         </a>
                       </NewSection> : ''
-                      }
-                      {/* End Biodata.js, You can move this section anywhere */}
+                      */}
+                      {/* End Biodata.js*/}
                       {
                         others.map((i) => {
                           return (
@@ -422,7 +456,6 @@ const LinkBio = styled.div`
          }
       }
     }
-
 `
 
 const TopPart = styled.div`
@@ -624,6 +657,8 @@ const LinkBox = styled.div`
     }
 `
 
+// COMMENTED OUT - NewSection not used anymore
+/*
 const NewSection = styled.div`
   display: flex;
   align-items: center;
@@ -638,3 +673,4 @@ const NewSection = styled.div`
       }
     }
 `
+*/
