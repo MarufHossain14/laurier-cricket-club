@@ -1,6 +1,6 @@
 const light = {
     bg: {
-        primary: 'linear-gradient(135deg, rgba(75, 46, 131, 0.25) 0%, rgba(70, 45, 120, 0.23) 20%, rgba(65, 40, 110, 0.20) 40%, rgba(100, 75, 70, 0.20) 60%, rgba(140, 110, 60, 0.20) 75%, rgba(160, 130, 70, 0.23) 85%, rgba(180, 151, 90, 0.25) 100%)',
+        primary: '#411884',
         secondary: `var(--light-black)`,
         tertiary: 'rgba(0,0,0,0.03)',
         border: "#EAEAEA",
@@ -24,7 +24,7 @@ const light = {
 
 const dark = {
     bg: {
-        primary: 'linear-gradient(135deg, rgba(75, 46, 131, 0.65) 0%, rgba(70, 45, 120, 0.63) 20%, rgba(65, 40, 110, 0.60) 40%, rgba(100, 75, 70, 0.60) 60%, rgba(140, 110, 60, 0.60) 75%, rgba(160, 130, 70, 0.63) 85%, rgba(180, 151, 90, 0.65) 100%)',
+        primary: '#411884',
         secondary: `var(--light-white)`,
         tertiary: 'rgba(255,255,255,0.03)',
         border: "#EAEAEA",

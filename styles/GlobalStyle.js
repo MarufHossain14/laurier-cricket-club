@@ -28,10 +28,8 @@ body.light-mode {
   --light-blue: #B7F2FF;
 
   /* Laurier Brand Colors */
-  --laurier-purple: #4B2E83;
-  --laurier-gold: #B4975A;
-  --laurier-purple-light: #7851A9;
-  --laurier-gold-light: #D4AF6A;
+  --laurier-purple: #411884;
+  --laurier-gold: #FCC314;
 
   --white: #FFFFFF;
   --white20: #ecedee;
@@ -58,24 +56,11 @@ html{
 }
 body {
   font-family: 'Inter', sans-serif;
-  background: url('/g-bg.svg') center center / cover no-repeat fixed;
+  background: var(--laurier-purple);
   min-height: 100vh;
   color: ${({ theme }) => theme.text.primary};
   text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: ${({ theme }) => theme.bg.primary};
-  pointer-events: none;
-  z-index: -1;
+  -webkit-font-smoothing: antialiased;
 }
 
 a{

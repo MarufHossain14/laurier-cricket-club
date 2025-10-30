@@ -70,11 +70,6 @@ const Links = () => {
   //   return el.type === "nft" && el.on
   // });
 
-  // Get data for other section
-  const others = allLinks.filter((el) => {
-    return el.type === "other" && el.on
-  });
-
   // Get data for custom section (WhatsApp, Membership, Feedback)
   const customs = allLinks.filter((el) => {
     return el.type === "custom" && el.on
@@ -221,46 +216,6 @@ const Links = () => {
               */}
               {/* End NFT Section */}
 
-              {/* Other Section */}
-              {
-                others.length > 0 ?
-                    <LinkSection>
-                      <h3>{others[0].type}</h3>
-                      {/* New Product Section*/}
-                      {/* BioData.js > newProduct == true */}
-                      {/* New Section will render once newProduct == true */}
-                      {/*
-                      (newProduct) ? <NewSection>
-                        <a href={newProductUrl} target="_blank" rel="noreferrer">
-                          <img
-                              src={'/newproduct.png'}
-                              className="newproduct"
-                          />
-                        </a>
-                      </NewSection> : ''
-                      */}
-                      {/* End Biodata.js*/}
-                      {
-                        others.map((i) => {
-                          return (
-                              <StyledLinkButton
-                                href={i.url}
-                                key={i.title}
-                                target="_blank"
-                                rel="noreferrer"
-                              >
-                                {{
-                                  icon: i.icon,
-                                  text: i.title
-                                }}
-                              </StyledLinkButton>
-                          )
-                        })
-                      }
-                    </LinkSection> : ''
-              }
-              {/* End Other Section */}
-
               {/* Custom Section - WhatsApp, Membership, Feedback */}
               {
                 customs.length > 0 ?
@@ -368,7 +323,7 @@ const Title = styled.div`
       font-weight: 800;
       letter-spacing: 0.5px;
       color: #FCC314;
-      text-shadow: 2px 2px 0px rgba(65, 24, 132, 0.3);
+      text-shadow: 2px 2px 0px rgba(65, 18, 132, 0.3);
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
         font-size: 30px;
       }
@@ -536,6 +491,9 @@ const LinkSection = styled.div`
     max-width: 400px;
     flex-direction: column;
     position: relative;
+    background: linear-gradient(135deg, rgba(65, 24, 132, 0.1), rgba(252, 195, 20, 0.1));
+    border-radius: 16px;
+    margin-bottom: 16px;
 
     && h3 {
       color: yellow !important;
@@ -573,10 +531,7 @@ const LinkSection = styled.div`
       letter-spacing: 3px;
       margin-bottom: 12px;
       font-weight: 600;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      background: linear-gradient(135deg, #FCC314, #411884);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #FCC314;
       position: relative;
       display: inline-block;
       margin: 0 auto 12px;
@@ -700,12 +655,12 @@ const LinkBox = styled.div`
     &.socialIcon{
       padding: 16px;
       border-radius: 50%;
-      border: 1px solid rgba(65, 24, 132, 0.2);
+      border: 1px solid #411884;
       margin: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(65, 24, 132, 0.05);
+      background: rgba(65, 18, 132, 0.05);
 
       svg {
         height: 24px;
@@ -715,7 +670,7 @@ const LinkBox = styled.div`
       }
 
       &:hover {
-        background: rgba(65, 24, 132, 0.1);
+        background: rgba(65, 18, 132, 0.1);
         border-color: #FCC314;
         svg {
           transform: scale(1.1);
