@@ -89,15 +89,17 @@ const TabsContainer = styled.div`
   /* Extra small mobile */
   @media (max-width: 374px) {
     max-width: calc(100vw - 1rem);
-    margin: 1rem auto 2rem auto;
+    margin: 0.75rem auto 1.5rem auto;
     border-radius: 6px;
+    font-size: 0.9em;
   }
 
   /* Small Mobile */
   @media (min-width: 375px) and (max-width: 480px) {
     max-width: calc(100vw - 1.5rem);
-    margin: 1.25rem auto 2.5rem auto;
+    margin: 1rem auto 2rem auto;
     border-radius: 8px;
+    font-size: 0.95em;
   }
 
   /* Large Mobile */
@@ -296,6 +298,19 @@ const TabContent = styled.div`
   top: 0;
   left: 0;
   right: 0;
+  padding: 24px;
+
+  @media (max-width: 374px) {
+    padding: 16px;
+  }
+
+  @media (min-width: 375px) and (max-width: 480px) {
+    padding: 18px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding: 20px;
+  }
   bottom: 0;
   padding: 0;
   animation: ${props => props.visible ? 'fadeIn 0.3s ease-out' : 'none'};
@@ -342,6 +357,7 @@ const ContentWrapper = styled.div`
     margin: 0 0 1.5rem 0;
     text-align: center;
     letter-spacing: 0.025em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
 
   p {
@@ -351,38 +367,43 @@ const ContentWrapper = styled.div`
     margin: 0;
     font-weight: 400;
     text-align: center;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.015em;
     max-width: 800px;
     margin: 0 auto;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   }
 
   /* Extra small mobile */
   @media (max-width: 374px) {
-    padding: 1rem;
+    padding: 0.75rem;
 
     h3 {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       margin-bottom: 0.75rem;
+      line-height: 1.3;
     }
 
     p {
-      font-size: 0.8rem;
-      line-height: 1.4;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
     }
   }
 
   /* Small mobile */
   @media (min-width: 375px) and (max-width: 480px) {
-    padding: 1.25rem;
+    padding: 1rem;
 
     h3 {
-      font-size: 0.95rem;
+      font-size: 1rem;
       margin-bottom: 1rem;
+      line-height: 1.4;
     }
 
     p {
-      font-size: 0.825rem;
+      font-size: 0.875rem;
       line-height: 1.5;
+      letter-spacing: 0.01em;
     }
   }
 

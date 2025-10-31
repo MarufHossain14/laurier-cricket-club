@@ -15,10 +15,32 @@ import bioData from "../data/BioData";
 import TabsSection from "./TabsSection";
 import { socialIcons } from './SocialIcons';
 import { StyledLinkButton } from './ui/Button';
+import React, { useState } from 'react';
+
+
+const Modal = ({ isOpen, onClose, email }) => {
+  if (!isOpen) return null;
+
+  return (
+    <ModalOverlay onClick={onClose}>
+      <ModalContent onClick={e => e.stopPropagation()}>
+        <CloseButton onClick={onClose}>&times;</CloseButton>
+        <ModalBody>
+          <div className="email">📧 {email}</div>
+          <ModalButton href={`mailto:${email}`}>
+            Click to Send Email
+          </ModalButton>
+        </ModalBody>
+      </ModalContent>
+    </ModalOverlay>
+  );
+};
 
 
 
 const Links = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalEmail, setModalEmail] = useState('');
 
   // all user info from bioData
   const name = bioData[0].name;
@@ -77,6 +99,11 @@ const Links = () => {
 
   return (
       <LinkWrapper>
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          email={modalEmail}
+        />
         <LinkContainer>
           <TopPart>
             <LinkHeader>
@@ -144,55 +171,8 @@ const Links = () => {
                           const handleClick = (e) => {
                             if (i.isEmail) {
                               e.preventDefault();
-                              const width = 400;
-                              const height = 200;
-                              const left = (window.screen.width - width) / 2;
-                              const top = (window.screen.height - height) / 2;
-                              const popup = window.open('', 'Contact Us',
-                                `width=${width},height=${height},top=${top},left=${left},status=no,menubar=no,toolbar=no,resizable=no`
-                              );
-                              popup.document.write(`
-                                <html>
-                                  <head>
-                                    <title>Contact Us</title>
-                                    <style>
-                                      body {
-                                        font-family: Arial, sans-serif;
-                                        display: flex;
-                                        flex-direction: column;
-                                        align-items: center;
-                                        justify-content: center;
-                                        height: 100vh;
-                                        margin: 0;
-                                        background-color: #f5f5f5;
-                                        color: #333;
-                                      }
-                                      .email {
-                                        margin: 20px 0;
-                                        font-size: 16px;
-                                        color: #411884;
-                                      }
-                                      .button {
-                                        padding: 10px 20px;
-                                        background-color: #411884;
-                                        color: white;
-                                        border: none;
-                                        border-radius: 5px;
-                                        cursor: pointer;
-                                        text-decoration: none;
-                                        font-size: 14px;
-                                      }
-                                      .button:hover {
-                                        background-color: #2d0f5c;
-                                      }
-                                    </style>
-                                  </head>
-                                  <body>
-                                    <div class="email">📧 ${i.url}</div>
-                                    <a href="mailto:${i.url}" class="button">Click to Send Email</a>
-                                  </body>
-                                </html>
-                              `);
+                              setModalEmail(i.url);
+                              setIsModalOpen(true);
                             }
                           };
 
@@ -320,7 +300,7 @@ export default Links;
 
 const LinkWrapper = styled(Container)`
 `
-const LinkContainer = styled.div`
+const  LinkContainer = styled.div`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -328,6 +308,10 @@ const LinkContainer = styled.div`
     align-items: center;
     text-align: center;
     padding: 24px;
+    @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
+        padding: 16px 12px;
+        padding-bottom: calc(env(safe-area-inset-bottom, 0) + 24px); /* iOS safe area */
+    }
 `
 
 const LinkHeader = styled.div`
@@ -511,23 +495,54 @@ const BottomPart = styled.div`
 
 `
 const LinkFoot = styled.div`
+    margin-top: 20px;
     h4{
-      color: ${({ theme }) => theme.text.secondary};
+      /* stronger contrast against the purple background */
+      color: rgba(255,255,255,0.95);
       line-height: 32px;
-      letter-spacing: -.2px;
+      letter-spacing: 0;
       font-size: 16px;
       font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.15); /* darker backdrop for better contrast */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
-        font-size: 12px;
+        font-size: 14px; /* increased from 12px */
+        padding: 10px 16px; /* increased padding */
+        line-height: 24px;
+        background: rgba(0,0,0,0.25); /* even darker backdrop for mobile */
+        margin: 0 16px; /* add side margins */
+        white-space: nowrap; /* prevent awkward wrapping */
+      }
+      a{
+        color: #FCC314; /* Laurier yellow for the handle */
+        font-weight: 700;
+        text-decoration: none;
+        padding: 2px 6px;
+        border-radius: 4px;
+        @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
+          color: #FFD54F; /* slightly lighter yellow for better mobile visibility */
+          font-weight: 800;
+          padding: 3px 8px;
+        }
+      }
+      a:hover{
+        text-decoration: underline;
+        background: rgba(255,255,255,0.1);
       }
       span{
         font-size: 10px;
         vertical-align: bottom;
         line-height: 32px;
         margin: 0 2px;
-        opacity: .6;
+        opacity: .9;
         @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
-          font-size: 8px;
+          font-size: 9px;
+          line-height: 24px;
         }
       }
     }
@@ -629,7 +644,7 @@ const LinkBox = styled.div`
     padding: 18px 20px;
     border-radius: 12px;
     margin: 8px 18px;
-    border: 1px solid rgba(65, 24, 132, 0.2);
+    border: 1px solid rgba(65, 24, 132, 0.25);
     flex-direction: row;
     display: flex;
     align-items: center;
@@ -640,10 +655,12 @@ const LinkBox = styled.div`
     letter-spacing: -.5px;
     position: relative;
     text-align: center;
-    background: rgba(65, 24, 132, 0.05);
-    backdrop-filter: blur(8px);
+    background: linear-gradient(135deg, rgba(65, 24, 132, 0.25), rgba(65, 24, 132, 0.15));
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 12px rgba(65, 24, 132, 0.15);
+    transition: all 0.3s ease;
 
-    &::before{
+    &::before {
       content: "";
       border-radius: 12px;
       display: block;
@@ -651,15 +668,18 @@ const LinkBox = styled.div`
       z-index: -1;
       inset: -2px;
       opacity: 0;
+      background: linear-gradient(135deg, rgba(65, 24, 132, 0.15), rgba(252, 195, 20, 0.15));
       transform: scale(0.8);
     }
     &:hover{
       transition: all 333ms ease 0s;
+      transform: translateY(-2px);
       border-color: #FCC314;
-      background: rgba(65, 24, 132, 0.1);
+      background: linear-gradient(135deg, rgba(65, 24, 132, 0.3), rgba(65, 24, 132, 0.2));
+      box-shadow: 0 8px 20px rgba(65, 24, 132, 0.25);
       &::before{
         opacity: 1;
-        background: linear-gradient(135deg, rgba(65, 24, 132, 0.1), rgba(252, 195, 20, 0.1));
+        background: linear-gradient(135deg, rgba(252, 195, 20, 0.2), rgba(65, 24, 132, 0.2));
         transition: all 333ms ease 0s;
         transform: scale(1);
       }
@@ -711,12 +731,13 @@ const LinkBox = styled.div`
     &.socialIcon{
       padding: 16px;
       border-radius: 50%;
-      border: 1px solid #411884;
+      border: 1px solid rgba(65, 24, 132, 0.5);
       margin: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(65, 18, 132, 0.05);
+      background: linear-gradient(135deg, rgba(65, 24, 132, 0.25), rgba(65, 24, 132, 0.15));
+      box-shadow: 0 4px 12px rgba(65, 24, 132, 0.15);
 
       svg {
         height: 24px;
@@ -726,8 +747,11 @@ const LinkBox = styled.div`
       }
 
       &:hover {
-        background: rgba(65, 18, 132, 0.1);
+        background: linear-gradient(135deg, rgba(65, 24, 132, 0.3), rgba(252, 195, 20, 0.2));
         border-color: #FCC314;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(65, 24, 132, 0.25);
+
         svg {
           transform: scale(1.1);
           color: #FCC314;
@@ -748,6 +772,114 @@ const LinkBox = styled.div`
       font-size: 16px;
     }
 `
+
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+`;
+
+const ModalContent = styled.div`
+  background: linear-gradient(135deg, rgba(65, 24, 132, 0.95), rgba(65, 24, 132, 0.85));
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 90%;
+  width: 320px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(252, 195, 20, 0.2);
+  animation: modalIn 0.3s ease-out;
+
+  @keyframes modalIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
+    width: 85%;
+    padding: 20px;
+  }
+`;
+
+const ModalBody = styled.div`
+  text-align: center;
+  color: white;
+
+  .email {
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: 500;
+    word-break: break-all;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+
+    @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
+      font-size: 16px;
+    }
+  }
+`;
+
+const ModalButton = styled.a`
+  display: inline-block;
+  padding: 12px 24px;
+  background: #FCC314;
+  color: #411884;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin-top: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: #ffd034;
+  }
+
+  @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  line-height: 1;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+  }
+`;
 
 // COMMENTED OUT - NewSection not used anymore
 /*

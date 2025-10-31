@@ -15,12 +15,12 @@ const StyledLinkButton = forwardRef(({
     justifyContent: 'space-between',
     gap: '1rem',
     width: '100%',
-    padding: '1rem 1.5rem',
+    padding: window.innerWidth <= 768 ? '1.125rem 1.5rem' : '1rem 1.5rem',
     borderRadius: '0.75rem',
     border: '1px solid #e5e7eb',
     backgroundColor: '#ffffff',
-    fontSize: '0.9375rem',
-    fontWeight: '500',
+    fontSize: window.innerWidth <= 768 ? '1rem' : '0.9375rem',
+    fontWeight: window.innerWidth <= 768 ? '600' : '500',
     letterSpacing: '0.01em',
     color: '#1f2937',
     textDecoration: 'none',
@@ -28,7 +28,8 @@ const StyledLinkButton = forwardRef(({
     cursor: 'pointer',
     position: 'relative',
     overflow: 'hidden',
-    margin: '0.5rem 0',
+    margin: window.innerWidth <= 768 ? '0.625rem 0' : '0.5rem 0',
+    touchAction: 'manipulation',
   };
 
   const hoverStyle = {

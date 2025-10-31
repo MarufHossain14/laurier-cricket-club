@@ -49,7 +49,7 @@ const webLinks = [
     },
     {
         title: 'Match Results & Stats',
-        url: 'https://lauriercricketclub.com/results',
+        url: 'https://cricheroes.com/team-profile/6767409/laurier-hawks/matches',
         type: 'main',
         icon: 'barChart3',
         on: true
