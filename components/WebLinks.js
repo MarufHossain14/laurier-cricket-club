@@ -359,7 +359,8 @@ const Title = styled.div`
     flex-direction: column;
     align-items: center;
     h1{
-      font-size: 36px;
+      /* Fluid, responsive title size */
+      font-size: clamp(22px, 7vw, 36px);
       font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -367,13 +368,15 @@ const Title = styled.div`
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: shimmer 3s infinite linear;
+      /* Softer shadow so small screens don't look blurry */
       text-shadow:
-        3px 3px 0px rgba(0, 0, 0, 0.4),
-        -2px -2px 4px rgba(255, 255, 255, 0.2),
-        0 0 8px rgba(252, 195, 20, 0.5),
-        0 0 12px rgba(252, 195, 20, 0.3);
+        2px 2px 0px rgba(0, 0, 0, 0.35),
+        0 0 6px rgba(252, 195, 20, 0.35);
       position: relative;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));      @keyframes shimmer {
+      line-height: 1.15;
+      word-break: break-word;
+      text-align: center;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));      @keyframes shimmer {
         0% {
           background-position: -200px;
         }
@@ -388,7 +391,7 @@ const Title = styled.div`
         left: 0;
         bottom: -4px;
         width: 100%;
-        height: 3px;
+        height: 2px;
         background: linear-gradient(90deg,
           transparent 0%,
           #FFD700 20%,
@@ -396,14 +399,14 @@ const Title = styled.div`
           #FFD700 80%,
           transparent 100%
         );
-        box-shadow:
-          0 0 10px rgba(255, 215, 0, 0.5),
-          0 0 20px rgba(255, 215, 0, 0.3);
+        box-shadow: 0 0 8px rgba(255, 215, 0, 0.35);
       }
 
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
-        font-size: 28px;
-        letter-spacing: 0.8px;
+        letter-spacing: 0.6px;
+        line-height: 1.1;
+        /* slightly reduce underline weight on tight spaces */
+        &::after { height: 2px; bottom: -3px; }
       }
     }
     h3{
@@ -427,11 +430,12 @@ const Title = styled.div`
       }
     }
     .handle{
-      height: 32px;
+      /* Fluid logo height */
+      height: clamp(22px, 6vw, 32px);
       margin-top: 6px;
       margin-bottom: 6px;
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
-        height: 26px;
+        height: clamp(22px, 6vw, 28px);
       }
     }
 `
