@@ -361,14 +361,49 @@ const Title = styled.div`
     h1{
       font-size: 36px;
       font-weight: 800;
-      letter-spacing: 0.5px;
-      color: #FCC314;
-      text-shadow: 2px 2px 0px rgba(65, 18, 132, 0.3);
-      @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
-        font-size: 30px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #FFD700 0%, #FFF3A1 50%, #FFD700 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 3s infinite linear;
+      text-shadow:
+        3px 3px 0px rgba(0, 0, 0, 0.4),
+        -2px -2px 4px rgba(255, 255, 255, 0.2),
+        0 0 8px rgba(252, 195, 20, 0.5),
+        0 0 12px rgba(252, 195, 20, 0.3);
+      position: relative;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));      @keyframes shimmer {
+        0% {
+          background-position: -200px;
+        }
+        100% {
+          background-position: 200px;
+        }
       }
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg,
+          transparent 0%,
+          #FFD700 20%,
+          #FFF3A1 50%,
+          #FFD700 80%,
+          transparent 100%
+        );
+        box-shadow:
+          0 0 10px rgba(255, 215, 0, 0.5),
+          0 0 20px rgba(255, 215, 0, 0.3);
+      }
+
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
-        font-size: 32px;
+        font-size: 28px;
+        letter-spacing: 0.8px;
       }
     }
     h3{
