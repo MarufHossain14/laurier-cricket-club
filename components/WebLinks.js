@@ -1,21 +1,12 @@
-// Weblinks Page Sections
-// created by @maruf14hussain
-// date: 29 Oct, 2025
-
-// import Image from "next/image"; // COMMENTED OUT - not used
 import styled from "styled-components";
-import { Container } from "./ReusableStyles"; // Only importing Container, others not used
-// import Link from "next/link"; // COMMENTED OUT - not used
+import { Container } from "./ReusableStyles";
 import { HexIcon, OvalIcon } from './icons';
-// import { FaChevronRight } from 'react-icons/fa'; // COMMENTED OUT - not used
-// import { MdHome } from 'react-icons/md'; // COMMENTED OUT - not used
-// import { HiArrowUpRight } from 'react-icons/hi2'; // COMMENTED OUT - not used
 import allLinks from "../data/LinksData";
 import bioData from "../data/BioData";
 import TabsSection from "./TabsSection";
 import { socialIcons } from './SocialIcons';
 import { StyledLinkButton } from './ui/Button';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 
 const Modal = ({ isOpen, onClose, email }) => {
@@ -66,11 +57,6 @@ const Links = () => {
   const subdescText = subdescShow ? subdesc : `Write your own if you want or just remove me/leave blank`
 
 
-  // const newProduct = bioData[0].newProduct; // checking for newProduct flag true false - COMMENTED OUT
-  // const newProductUrl = bioData[0].newProductUrl; // get product url if available - COMMENTED OUT
-
-
-
   // Collect all links filter by type - social, main, other and custom
   // get data for social section
   const social = allLinks.filter((el) => {
@@ -81,16 +67,6 @@ const Links = () => {
   const main = allLinks.filter((el) => {
     return el.type === "main" && el.on
   });
-
-  // // Get data for install section
-  // const install = allLinks.filter((el) => {
-  //   return el.type === "install" && el.on
-  // });
-
-  // // Get data for nfts
-  // const nfts = allLinks.filter((el) => {
-  //   return el.type === "nft" && el.on
-  // });
 
   // Get data for custom section (WhatsApp, Membership, Feedback)
   const customs = allLinks.filter((el) => {
@@ -196,61 +172,6 @@ const Links = () => {
                     </LinkSection> : ''
               }
               {/* End Main Section */}
-
-              {/* Install Section - COMMENTED OUT */}
-              {/*
-                install.length > 0 ?
-                    <LinkSection>
-                      <h3>{install[0].type}</h3>
-                      {
-                        install.map((i) => {
-                          return (
-                              <StyledLinkButton
-                                href={i.url}
-                                key={i.title}
-                                target="_blank"
-                                rel="noreferrer"
-                              >
-                                {{
-                                  icon: i.icon,
-                                  text: i.title,
-                                  style: { filter: 'var(--img)' }
-                                }}
-                              </StyledLinkButton>
-                          )
-                        })
-                      }
-                    </LinkSection> : ''
-              */}
-              {/* End Install Section */}
-
-              {/* NFT Section - COMMENTED OUT */}
-              {/*
-                nfts.length > 0 ?
-                    <LinkSection>
-                      <h3>{nfts[0].type}s</h3>
-                      {
-                        nfts.map((i) => {
-                          return (
-                              <StyledLinkButton
-                                href={i.url}
-                                key={i.title}
-                                target="_blank"
-                                rel="noreferrer"
-                              >
-                                {{
-                                  icon: i.icon,
-                                  text: i.title,
-                                  style: { filter: 'var(--img)' }
-                                }}
-                              </StyledLinkButton>
-                          )
-                        })
-                      }
-                    </LinkSection>
-                    : ''
-              */}
-              {/* End NFT Section */}
 
               {/* Custom Section - WhatsApp, Membership, Feedback */}
               {
@@ -794,21 +715,3 @@ const CloseButton = styled.button`
     background: var(--color-surface-muted);
   }
 `;
-
-// COMMENTED OUT - NewSection not used anymore
-/*
-const NewSection = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 16px 20px;
-    img{
-      width: 100%;
-      border: 1px solid ${({ theme }) => theme.bg.secondary};
-      border-radius: 12px;
-      cursor: pointer;
-      &:hover{
-       transform: scale(1.01);
-      }
-    }
-`
-*/

@@ -254,7 +254,9 @@ const TabTrigger = styled.button`
       font-size: 1.3em;
     }
   }
-`;const TabContentContainer = styled.div`
+`;
+
+const TabContentContainer = styled.div`
   position: relative;
   min-height: 280px;
 
@@ -281,11 +283,13 @@ const TabTrigger = styled.button`
   /* Desktop */
   @media (min-width: 1024px) {
     min-height: 350px;
+    height: 360px;
   }
 
   /* Large desktop */
   @media (min-width: 1400px) {
     min-height: 380px;
+    height: 400px;
   }
 `;
 
