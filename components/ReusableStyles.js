@@ -24,49 +24,53 @@ export const Button = styled.button`
 export const LinkButton = styled.a`
     display: flex;
     align-items: center;
-    color: var(--white);
     text-decoration: none;
-    color: inherit;
+    color: var(--color-text);
     cursor: pointer;
     outline: none;
     line-height: 20px;
     p{
       line-height: 24px;
       font-size: 20px;
-      font-weight: 700;
+      font-weight: 600;
       text-transform: uppercase;
       font-style: normal;
       border-top-left-radius: 16px;
       border-bottom-left-radius: 16px;
-      background: var(--lfg-sky-200);
-      border: 2px solid var(--lfg-sky-200);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
     }
     div{
       line-height: 0;
       border-top-right-radius: 16px;
       border-bottom-right-radius: 16px;
-      border: 2px solid var(--lfg-sky-200);
-      background: var(--lfg-sky-300);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
     }
 `
 
 export const Tag = styled.div`
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 20px;
     padding: 4px 12px;
     border-radius: 14px;
     display: inline-flex;
-    border: 1px solid var(--black);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-muted);
+    color: var(--color-text);
 
     &.red{
-        background: var(--red);
+        background: var(--color-accent-weak);
+        color: var(--color-accent);
     }
     &.blue{
-        background: var(--blue);
+        background: var(--color-accent-weak);
+        color: var(--color-accent);
     }
     &.yellow{
-        background: var(--yellow);
+        background: var(--color-accent-weak);
+        color: var(--color-accent);
     }
 `
 
@@ -91,21 +95,19 @@ export const ButtonLink = styled.a`
     font-size: 24px;
     display: inline-flex;
     line-height: normal;
-    padding: 16px 32px;
-    border-style: none;
+    padding: 18px 36px;
+    border: 1px solid var(--color-border);
     outline: none;
     cursor: pointer;
-    border-radius: 36px;
-    color: ${({ theme }) => theme.text.onPrimary};
-    background: rgb(228, 232, 236);
-    background: linear-gradient(262.31deg, #06F1F8 1.86%, #2F8FFF 27.73%, #FF3382 68.97%, #FFBD6F 99.88%);
+    border-radius: 14px;
+    color: var(--color-text);
+    background: var(--color-surface);
     transition: all 0.3s ease;
 
     &:hover {
-        color: ${({ theme }) => theme.text.onPrimary};
-        background: linear-gradient(262.31deg, #FFBD6F 1.86%, #FF3382 27.73%, #2F8FFF 68.97%, #06F1F8 99.88%);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        color: var(--color-text);
+        background: var(--color-surface-muted);
+        border-color: var(--color-accent);
     }
     transition: all .3s;
     position: relative;

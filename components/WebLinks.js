@@ -26,7 +26,7 @@ const Modal = ({ isOpen, onClose, email }) => {
       <ModalContent onClick={e => e.stopPropagation()}>
         <CloseButton onClick={onClose}>&times;</CloseButton>
         <ModalBody>
-          <div className="email">📧 {email}</div>
+          <div className="email">{email}</div>
           <ModalButton href={`mailto:${email}`}>
             Click to Send Email
           </ModalButton>
@@ -307,10 +307,10 @@ const  LinkContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    padding: 24px;
+    padding: 40px 24px;
     @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
-        padding: 16px 12px;
-        padding-bottom: calc(env(safe-area-inset-bottom, 0) + 24px); /* iOS safe area */
+        padding: 24px 16px;
+        padding-bottom: calc(env(safe-area-inset-bottom, 0) + 32px); /* iOS safe area */
     }
 `
 
@@ -318,10 +318,10 @@ const LinkHeader = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 60px;
-    margin-bottom: 12px;
+    margin-top: 48px;
+    margin-bottom: 24px;
     @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
-       margin-top: 20px;
+       margin-top: 24px;
     }
 `
 
@@ -329,28 +329,23 @@ const Avatar = styled.div`
     height: 90px;
     width: 90px;
     position: relative;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 `
 
 const AvatarWrap = styled.div`
    height: 100%;
    width: 100%;
-   filter: drop-shadow(0px 1px 2px var(--avatar-shadow));
    img{
     height: calc(100% - 6px);
     width: calc(100% - 6px);
+    border: 2px solid var(--color-border);
+    background: var(--color-surface);
    }
    .avatar-border{
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        background: ${({ theme }) => theme.bg.primary};
+        display: none;
    }
    .avatar-fill{
-        height: calc(100% - 6px);
-        width: calc(100% - 6px);
-        position: absolute;
-        background: ${({ theme }) => theme.bg.primary};
+        display: none;
    }
 `
 
@@ -361,62 +356,27 @@ const Title = styled.div`
     h1{
       /* Fluid, responsive title size */
       font-size: clamp(22px, 7vw, 36px);
-      font-weight: 800;
-      letter-spacing: 1px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      background: linear-gradient(135deg, #FFD700 0%, #FFF3A1 50%, #FFD700 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: shimmer 3s infinite linear;
-      /* Softer shadow so small screens don't look blurry */
-      text-shadow:
-        2px 2px 0px rgba(0, 0, 0, 0.35),
-        0 0 6px rgba(252, 195, 20, 0.35);
+      color: var(--color-text);
       position: relative;
       line-height: 1.15;
       word-break: break-word;
       text-align: center;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));      @keyframes shimmer {
-        0% {
-          background-position: -200px;
-        }
-        100% {
-          background-position: 200px;
-        }
-      }
-
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -4px;
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(90deg,
-          transparent 0%,
-          #FFD700 20%,
-          #FFF3A1 50%,
-          #FFD700 80%,
-          transparent 100%
-        );
-        box-shadow: 0 0 8px rgba(255, 215, 0, 0.35);
-      }
 
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
         letter-spacing: 0.6px;
         line-height: 1.1;
-        /* slightly reduce underline weight on tight spaces */
-        &::after { height: 2px; bottom: -3px; }
       }
     }
     h3{
-      margin-top: 8px;
+      margin-top: 10px;
       font-size: 18px;
-      font-weight: 500;
+      font-weight: 400;
       letter-spacing: 0px;
-      color: #411884;
-      opacity: .9;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      color: var(--color-accent);
+      opacity: 0.9;
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
         font-size: 15px;
         margin-top:2px;
@@ -447,17 +407,16 @@ const LinkBio = styled.div`
     margin: 0 auto;
     h1{
       font-size: 24px;
-      line-height: 1.5;
-      font-weight: 500;
+      line-height: 1.6;
+      font-weight: 400;
       letter-spacing: -0.3px;
-      padding: 0 20px;
-      color: rgba(255, 255, 255, 0.95);
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      padding: 0 24px;
+      color: var(--color-text);
       position: relative;
 
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
-        font-size: 20px;
-        line-height: 1.4;
+        font-size: 19px;
+        line-height: 1.5;
         padding: 0 16px;
       }
 
@@ -475,49 +434,29 @@ const LinkBio = styled.div`
       }
     }
     h4{
-      font-size: 18px;
+      font-size: 17px;
       letter-spacing: 0;
-      margin: 16px 0;
-      color: rgba(255, 255, 255, 0.85);
-      font-weight: 500;
-      line-height: 1.6;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+      margin: 20px 0;
+      color: var(--color-muted);
+      font-weight: 400;
+      line-height: 1.7;
 
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
-        font-size: 16px;
+        font-size: 15px;
         padding: 0 24px;
         line-height: 1.5;
       }
 
       a{
          font-weight: 600;
-         color: #f2a900;
+         color: var(--color-accent);
          transition: all 0.3s ease;
          text-decoration: none;
          position: relative;
-         padding-bottom: 1px;
-
-         &::after {
-           content: '';
-           position: absolute;
-           bottom: 0;
-           left: 0;
-           width: 100%;
-           height: 1px;
-           background: #f2a900;
-           transform: scaleX(0);
-           transform-origin: right;
-           transition: transform 0.3s ease;
-         }
 
          &:hover{
-           color: #ffb84d;
-           text-shadow: 0 0 15px rgba(242, 169, 0, 0.4);
-
-           &::after {
-             transform: scaleX(1);
-             transform-origin: left;
-           }
+           color: var(--color-accent);
+           text-decoration: underline;
          }
       }
     }
@@ -530,48 +469,45 @@ const TopPart = styled.div`
 
 
 const BottomPart = styled.div`
-    margin-bottom: 40px;
+    margin-bottom: 56px;
 
 `
 const LinkFoot = styled.div`
-    margin-top: 20px;
+    margin-top: 28px;
     h4{
-      /* stronger contrast against the purple background */
-      color: rgba(255,255,255,0.95);
-      line-height: 32px;
+      color: var(--color-muted);
+      line-height: 28px;
       letter-spacing: 0;
       font-size: 16px;
-      font-weight: 500;
+      font-weight: 400;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 16px;
-      border-radius: 8px;
-      background: rgba(0,0,0,0.15); /* darker backdrop for better contrast */
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
         font-size: 14px; /* increased from 12px */
-        padding: 10px 16px; /* increased padding */
+        padding: 10px 14px; /* increased padding */
         line-height: 24px;
-        background: rgba(0,0,0,0.25); /* even darker backdrop for mobile */
         margin: 0 16px; /* add side margins */
         white-space: nowrap; /* prevent awkward wrapping */
       }
       a{
-        color: #FCC314; /* Laurier yellow for the handle */
-        font-weight: 700;
+        color: var(--color-accent); /* Laurier purple for the handle */
+        font-weight: 600;
         text-decoration: none;
         padding: 2px 6px;
         border-radius: 4px;
         @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
-          color: #FFD54F; /* slightly lighter yellow for better mobile visibility */
-          font-weight: 800;
+          font-weight: 600;
           padding: 3px 8px;
         }
       }
       a:hover{
         text-decoration: underline;
-        background: rgba(255,255,255,0.1);
+        background: var(--color-surface-muted);
       }
       span{
         font-size: 10px;
@@ -595,38 +531,29 @@ const WebLinkWrap = styled.div`
 
 
 const LinkSection = styled.div`
-    padding: 16px 0;
+    padding: 20px 0;
     display: flex;
     margin: 0 auto;
     max-width: 400px;
     flex-direction: column;
     position: relative;
-    background: linear-gradient(135deg, rgba(65, 24, 132, 0.1), rgba(252, 195, 20, 0.1));
-    border-radius: 16px;
-    margin-bottom: 16px;
-
-    && h3 {
-      color: yellow !important;
-    }    h3 {
-      font-size: 14px;
-      text-transform: uppercase;
-      margin: 8px 20px;
-      color: #FCC314;
-      font-weight: 700;
-      letter-spacing: .1em;
-    }
+    background: var(--color-surface);
+    border-radius: 14px;
+    margin-bottom: 24px;
+    border: 1px solid var(--color-border);
 
     &:not(.social) {
-      background: linear-gradient(135deg, rgba(65, 24, 132, 0.05), rgba(252, 195, 20, 0.05));
-      border-radius: 16px;
-      padding: 16px;
-      border: 1px solid rgba(65, 24, 132, 0.1);
+      background: var(--color-surface);
+      border-radius: 14px;
+      padding: 20px;
     }
 
     &.social{
       max-width: max-content;
       padding: 0;
       margin-bottom: 18px;
+      background: transparent;
+      border: none;
     }
     .iconsonly{
       display: flex;
@@ -638,25 +565,14 @@ const LinkSection = styled.div`
     h3{
       font-size: 14px;
       text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
       font-weight: 600;
-      color: #FCC314;
+      color: var(--color-accent);
       position: relative;
       display: inline-block;
       margin: 0 auto 12px;
       padding-bottom: 4px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 40px;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, #FCC314, #411884);
-      }
 
       @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
         font-size: 13px;
@@ -682,8 +598,8 @@ const LinkTitle = styled.div`
 const LinkBox = styled.div`
     padding: 18px 20px;
     border-radius: 12px;
-    margin: 8px 18px;
-    border: 1px solid rgba(65, 24, 132, 0.25);
+    margin: 10px 0;
+    border: 1px solid var(--color-border);
     flex-direction: row;
     display: flex;
     align-items: center;
@@ -694,34 +610,11 @@ const LinkBox = styled.div`
     letter-spacing: -.5px;
     position: relative;
     text-align: center;
-    background: linear-gradient(135deg, rgba(65, 24, 132, 0.25), rgba(65, 24, 132, 0.15));
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 12px rgba(65, 24, 132, 0.15);
-    transition: all 0.3s ease;
-
-    &::before {
-      content: "";
-      border-radius: 12px;
-      display: block;
-      position: absolute;
-      z-index: -1;
-      inset: -2px;
-      opacity: 0;
-      background: linear-gradient(135deg, rgba(65, 24, 132, 0.15), rgba(252, 195, 20, 0.15));
-      transform: scale(0.8);
-    }
+    background: var(--color-surface);
+    transition: all 0.2s ease;
     &:hover{
-      transition: all 333ms ease 0s;
-      transform: translateY(-2px);
-      border-color: #FCC314;
-      background: linear-gradient(135deg, rgba(65, 24, 132, 0.3), rgba(65, 24, 132, 0.2));
-      box-shadow: 0 8px 20px rgba(65, 24, 132, 0.25);
-      &::before{
-        opacity: 1;
-        background: linear-gradient(135deg, rgba(252, 195, 20, 0.2), rgba(65, 24, 132, 0.2));
-        transition: all 333ms ease 0s;
-        transform: scale(1);
-      }
+      border-color: var(--color-accent);
+      background: var(--color-surface-muted);
     }
     .new-up{
       transform: scale(.8);
@@ -730,53 +623,43 @@ const LinkBox = styled.div`
 
     /* Custom styles for WhatsApp button */
     &.whatsapp{
-      background: linear-gradient(135deg, #FCC314 0%, #411884 100%);
-      border: none;
-      color: white;
-      &::before{
-        background: linear-gradient(135deg, #411884 0%, #FCC314 100%);
-      }
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: var(--color-accent-contrast);
       ${LinkTitle} {
-        color: white;
+        color: var(--color-accent-contrast);
       }
     }
 
     /* Custom styles for Membership button */
     &.membership{
-      background: linear-gradient(135deg, #411884 0%, #FCC314 100%);
-      border: none;
-      color: white;
-      &::before{
-        background: linear-gradient(135deg, #FCC314 0%, #411884 100%);
-      }
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: var(--color-accent-contrast);
       ${LinkTitle} {
-        color: white;
+        color: var(--color-accent-contrast);
       }
     }
 
     /* Custom styles for Feedback button */
     &.feedback{
-      background: linear-gradient(135deg, #FCC314 0%, #411884 100%);
-      border: none;
-      color: white;
-      &::before{
-        background: linear-gradient(135deg, #411884 0%, #FCC314 100%);
-      }
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: var(--color-accent-contrast);
       ${LinkTitle} {
-        color: white;
+        color: var(--color-accent-contrast);
       }
     }
 
     &.socialIcon{
       padding: 16px;
       border-radius: 50%;
-      border: 1px solid rgba(65, 24, 132, 0.5);
+      border: 1px solid var(--color-border);
       margin: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, rgba(65, 24, 132, 0.25), rgba(65, 24, 132, 0.15));
-      box-shadow: 0 4px 12px rgba(65, 24, 132, 0.15);
+      background: var(--color-surface);
 
       svg {
         height: 24px;
@@ -786,14 +669,11 @@ const LinkBox = styled.div`
       }
 
       &:hover {
-        background: linear-gradient(135deg, rgba(65, 24, 132, 0.3), rgba(252, 195, 20, 0.2));
-        border-color: #FCC314;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(65, 24, 132, 0.25);
+        background: var(--color-surface-muted);
+        border-color: var(--color-accent);
 
         svg {
-          transform: scale(1.1);
-          color: #FCC314;
+          color: var(--color-accent);
         }
       }
 
@@ -818,25 +698,23 @@ const ModalOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(5px);
+  background: rgba(17, 16, 15, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: 20px;
+  padding: 24px 16px;
 `;
 
 const ModalContent = styled.div`
-  background: linear-gradient(135deg, rgba(65, 24, 132, 0.95), rgba(65, 24, 132, 0.85));
-  border-radius: 16px;
+  background: var(--color-surface);
+  border-radius: 14px;
   padding: 24px;
-  max-width: 90%;
-  width: 320px;
+  width: min(92vw, 360px);
   position: relative;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(252, 195, 20, 0.2);
+  border: 1px solid var(--color-border);
   animation: modalIn 0.3s ease-out;
+  box-sizing: border-box;
 
   @keyframes modalIn {
     from {
@@ -857,15 +735,15 @@ const ModalContent = styled.div`
 
 const ModalBody = styled.div`
   text-align: center;
-  color: white;
+  color: var(--color-text);
 
   .email {
-    margin: 20px 0;
+    margin: 20px 0 18px;
     font-size: 18px;
-    font-weight: 500;
-    word-break: break-all;
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    font-weight: 400;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    color: var(--color-text);
 
     @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
       font-size: 16px;
@@ -876,22 +754,20 @@ const ModalBody = styled.div`
 const ModalButton = styled.a`
   display: inline-block;
   padding: 12px 24px;
-  background: #FCC314;
-  color: #411884;
-  border: none;
-  border-radius: 8px;
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  border: 1px solid var(--color-accent);
+  border-radius: 10px;
   cursor: pointer;
   text-decoration: none;
   font-size: 16px;
   font-weight: 600;
   transition: all 0.2s ease;
   margin-top: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    background: #ffd034;
+    background: var(--color-accent);
+    border-color: var(--color-accent);
   }
 
   @media screen and (max-width: ${({ theme }) => theme.deviceSize.tablet}) {
@@ -905,8 +781,8 @@ const CloseButton = styled.button`
   top: 12px;
   right: 12px;
   background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
   font-size: 24px;
   cursor: pointer;
   padding: 4px 8px;
@@ -915,8 +791,7 @@ const CloseButton = styled.button`
   transition: all 0.2s ease;
 
   &:hover {
-    color: white;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--color-surface-muted);
   }
 `;
 

@@ -3,42 +3,15 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 body.dark-mode {
   --img: invert(1);
-  --avatar-shadow: rgba(28,22,47,.3);
+  --avatar-shadow: rgba(0, 0, 0, 0);
 }
 
 body.light-mode {
   --img: invert(0);
-  --avatar-shadow: rgba(48,52,77,.1);
+  --avatar-shadow: rgba(0, 0, 0, 0);
 }
 
 * {
-  --bg-light-yellow: #F2F2EE;
-  --bg-light-blue: #EDF2FF;
-  --bg-light-red: #F2EEEE;
-
-  --light-yellow: #FFF6C5;
-  --yellow: #F8C231;
-
-  --light-red: #FFC5EC;
-  --red: #FF6969;
-  --pink: #ED81FF;
-  --light-pink: #FFE9FA;
-
-  --blue: #00A3FF;
-  --light-blue: #B7F2FF;
-
-  /* Laurier Brand Colors */
-  --laurier-purple: #411884;
-  --laurier-gold: #FCC314;
-
-  --white: #FFFFFF;
-  --white20: #ecedee;
-  --black: #11181C;
-  --light-gray: #858585;
-  --gray: #687076;
-  --light-black: rgba(0,0,0,.05);
-  --light-white: rgba(255,255,255,.03);
-
   margin: 0;
   padding: 0;
   border: 0;
@@ -46,7 +19,7 @@ body.light-mode {
   text-decoration: none;
   box-sizing: border-box;
   line-height: normal;
-  transition: all .1s ease;
+  transition: color .1s ease, background-color .1s ease, border-color .1s ease;
 
 
 }
@@ -56,11 +29,21 @@ html{
 }
 body {
   font-family: 'Inter', sans-serif;
+  font-weight: 400;
   background: ${({ theme }) => theme.bg.primary};
   min-height: 100vh;
   color: ${({ theme }) => theme.text.primary};
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  --color-bg: ${({ theme }) => theme.bg.primary};
+  --color-surface: ${({ theme }) => theme.bg.secondary};
+  --color-surface-muted: ${({ theme }) => theme.bg.tertiary};
+  --color-border: ${({ theme }) => theme.bg.border};
+  --color-text: ${({ theme }) => theme.text.primary};
+  --color-muted: ${({ theme }) => theme.text.secondary};
+  --color-accent: ${({ theme }) => theme.accent.primary};
+  --color-accent-weak: ${({ theme }) => theme.accent.soft};
+  --color-accent-contrast: ${({ theme }) => theme.accent.contrast};
 }
 
 a{

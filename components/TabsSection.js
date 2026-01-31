@@ -77,14 +77,11 @@ const TabsContainer = styled.div`
   width: 100%;
   max-width: 600px;
   min-width: 320px;
-  background: rgba(0, 0, 0, 0.65);
+  background: var(--color-surface);
   border-radius: 12px;
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-border);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15),
-              0 2px 8px rgba(0, 0, 0, 0.1);
 
   /* Extra small mobile */
   @media (max-width: 374px) {
@@ -130,8 +127,8 @@ const TabsContainer = styled.div`
 
 const TabsList = styled.div`
   display: flex;
-  background: rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--color-surface-muted);
+  border-bottom: 1px solid var(--color-border);
   position: relative;
   padding: 4px;
   border-radius: 8px 8px 0 0;
@@ -145,10 +142,10 @@ const TabTrigger = styled.button`
   flex: 1;
   padding: 12px 20px;
   border: none;
-  background: ${props => props.active ? 'rgba(255, 255, 255, 0.1)' : 'transparent'};
-  color: ${props => props.active ? '#ffffff' : 'rgba(255, 255, 255, 0.7)'};
+  background: ${props => props.active ? 'var(--color-surface)' : 'transparent'};
+  color: ${props => props.active ? 'var(--color-text)' : 'var(--color-muted)'};
   cursor: pointer;
-  font-weight: ${props => props.active ? '600' : '500'};
+  font-weight: ${props => props.active ? '600' : '400'};
   font-size: 0.875rem;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
@@ -172,12 +169,12 @@ const TabTrigger = styled.button`
   }
 
   &:hover {
-    color: ${props => props.active ? '#ffffff' : 'rgba(255, 255, 255, 0.9)'};
-    background: ${props => props.active ? 'rgba(255, 255, 255, 0.15)' : 'rgba(255, 255, 255, 0.05)'};
+    color: var(--color-text);
+    background: var(--color-surface);
   }
 
   &:active {
-    transform: scale(0.98);
+    transform: translateY(0);
   }
 
   /* Extra small mobile - icons only */
@@ -298,7 +295,7 @@ const TabContent = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  padding: 24px;
+  padding: 0;
 
   @media (max-width: 374px) {
     padding: 16px;
@@ -312,7 +309,6 @@ const TabContent = styled.div`
     padding: 20px;
   }
   bottom: 0;
-  padding: 0;
   animation: ${props => props.visible ? 'fadeIn 0.3s ease-out' : 'none'};
   overflow-y: auto;
 
@@ -337,12 +333,12 @@ const TabContent = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--color-border);
     border-radius: 2px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--color-muted);
   }
 `;
 
@@ -351,17 +347,16 @@ const ContentWrapper = styled.div`
   text-align: left;
 
   h3 {
-    color: #ffffff;
+    color: var(--color-text);
     font-size: 1.1rem;
     font-weight: 600;
     margin: 0 0 1.5rem 0;
     text-align: center;
     letter-spacing: 0.025em;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
 
   p {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--color-muted);
     line-height: 1.6;
     font-size: 0.9rem;
     margin: 0;
@@ -370,7 +365,6 @@ const ContentWrapper = styled.div`
     letter-spacing: 0.015em;
     max-width: 800px;
     margin: 0 auto;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   }
 
   /* Extra small mobile */
@@ -474,12 +468,12 @@ const FAQItem = styled.div`
   margin-bottom: 1.5rem;
   padding: 1.25rem;
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
   transition: all 0.2s ease;
 
   h4 {
-    color: #ffffff;
+    color: var(--color-text);
     margin-bottom: 0.75rem;
     font-size: 0.9rem;
     font-weight: 600;
@@ -490,7 +484,7 @@ const FAQItem = styled.div`
 
     &::before {
       content: '•';
-      color: rgba(242, 169, 0, 0.8);
+      color: var(--color-accent);
       font-size: 1.2rem;
       flex-shrink: 0;
     }
@@ -498,7 +492,7 @@ const FAQItem = styled.div`
 
   p {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-muted);
     line-height: 1.5;
     margin: 0;
     font-weight: 400;
@@ -511,8 +505,8 @@ const FAQItem = styled.div`
   }
 
   &:hover {
-    background: rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 255, 255, 0.12);
+    background: var(--color-surface);
+    border-color: var(--color-accent);
   }
 
   /* Extra small mobile */
@@ -619,7 +613,7 @@ const StepList = styled.ul`
   gap: 1rem;
 
   li {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--color-text);
     font-size: 0.85rem;
     font-weight: 400;
     letter-spacing: 0.01em;
@@ -629,15 +623,15 @@ const StepList = styled.ul`
     padding: 1rem;
     border-radius: 8px;
     transition: all 0.2s ease;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--color-surface-muted);
+    border: 1px solid var(--color-border);
     position: relative;
     text-align: left;
 
     svg {
       font-size: 1.1em;
       flex-shrink: 0;
-      color: rgba(242, 169, 0, 0.8);
+      color: var(--color-accent);
     }
 
     span {
@@ -646,9 +640,8 @@ const StepList = styled.ul`
     }
 
     &:hover {
-      background: rgba(0, 0, 0, 0.3);
-      border-color: rgba(255, 255, 255, 0.12);
-      transform: translateX(2px);
+      background: var(--color-surface);
+      border-color: var(--color-accent);
     }
 
     /* Extra small mobile */

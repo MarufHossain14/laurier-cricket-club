@@ -17,27 +17,25 @@ const StyledLinkButton = forwardRef(({
     width: '100%',
     padding: window.innerWidth <= 768 ? '1.125rem 1.5rem' : '1rem 1.5rem',
     borderRadius: '0.75rem',
-    border: '1px solid #e5e7eb',
-    backgroundColor: '#ffffff',
+    border: '1px solid var(--color-border)',
+    backgroundColor: 'var(--color-surface)',
     fontSize: window.innerWidth <= 768 ? '1rem' : '0.9375rem',
-    fontWeight: window.innerWidth <= 768 ? '600' : '500',
+    fontWeight: '400',
     letterSpacing: '0.01em',
-    color: '#1f2937',
+    color: 'var(--color-text)',
     textDecoration: 'none',
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
     cursor: 'pointer',
     position: 'relative',
     overflow: 'hidden',
-    margin: window.innerWidth <= 768 ? '0.625rem 0' : '0.5rem 0',
+    margin: window.innerWidth <= 768 ? '0.75rem 0' : '0.625rem 0',
     touchAction: 'manipulation',
   };
 
   const hoverStyle = {
-    borderColor: '#d1d5db',
-    backgroundColor: '#f8fafc',
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-    transform: 'translateY(-2px)',
-    color: '#111827',
+    borderColor: 'var(--color-accent)',
+    backgroundColor: 'var(--color-surface-muted)',
+    color: 'var(--color-text)',
   };
 
   const tooltipStyle = {
@@ -98,7 +96,7 @@ const StyledLinkButton = forwardRef(({
               {(() => {
                 const Icon = getIcon(children.icon);
                 if (Icon) {
-                  return <Icon size={18} color="#6b7280" />;
+                  return <Icon size={18} color="var(--color-muted)" />;
                 }
                 if (typeof children.icon === 'string' && children.icon.startsWith('/')) {
                   return (
@@ -119,9 +117,9 @@ const StyledLinkButton = forwardRef(({
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
-                fontWeight: '500',
+                fontWeight: '600',
                 fontSize: '0.9375rem',
-                color: '#374151',
+                color: 'var(--color-text)',
               }}
             >
               {children.text || children.title}
@@ -141,16 +139,14 @@ const StyledLinkButton = forwardRef(({
           width: '1.25rem',
           height: '1.25rem',
           flexShrink: 0,
-          color: '#9ca3af',
+          color: 'var(--color-muted)',
           transition: 'all 0.2s ease',
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.color = '#374151';
-          e.currentTarget.style.transform = 'translate(2px, -2px)';
+          e.currentTarget.style.color = 'var(--color-text)';
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.color = '#9ca3af';
-          e.currentTarget.style.transform = 'translate(0, 0)';
+          e.currentTarget.style.color = 'var(--color-muted)';
         }}
       >
         <HiArrowUpRight size={16} />

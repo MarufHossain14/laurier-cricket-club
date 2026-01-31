@@ -1,47 +1,57 @@
 const light = {
     bg: {
-        primary: 'linear-gradient(135deg, #2d0f5c 0%, #2d0f5c 50%, #411884 65%, rgba(252, 195, 20, 0.25) 85%, rgba(252, 195, 20, 0.15) 100%)',
-        secondary: `var(--light-black)`,
-        tertiary: 'rgba(0,0,0,0.03)',
-        border: "#EAEAEA",
-        inset: '#e2e4e8',
-        input: 'rgba(65,67,78,0.12)',
-        hover: 'linear-gradient(270deg, #FFF7FB 0%, #F4F8FF 100%);',
+        primary: '#f8f7f4',
+        secondary: '#ffffff',
+        tertiary: '#f2f1ed',
+        border: '#e1ddd5',
+        inset: '#ece9e3',
+        input: '#ffffff',
+        hover: '#f5f4f0',
     },
     text: {
-        primary: `var(--black)`,
-        secondary: 'rgba(0,0,0,0.5)',
-        tertiary: '#646464',
-        quarternary: '#9194a1',
-        placeholder: 'rgba(82,85,96,0.5)',
+        primary: '#1f1c1a',
+        secondary: '#5c5b58',
+        tertiary: '#7a7874',
+        quarternary: '#9a9892',
+        placeholder: '#a4a29d',
         onPrimary: '#ffffff',
     },
     img: {
         filter: 'invert(0)'
+    },
+    accent: {
+        primary: '#411884',
+        soft: '#f3edfa',
+        contrast: '#fcc314',
     },
 
 }
 
 const dark = {
     bg: {
-        primary: 'linear-gradient(135deg, #2d0f5c 0%, #2d0f5c 50%, #411884 65%, rgba(252, 195, 20, 0.35) 85%, rgba(252, 195, 20, 0.25) 100%)',
-        secondary: `var(--light-white)`,
-        tertiary: 'rgba(255,255,255,0.03)',
-        border: "#EAEAEA",
-        inset: '#111111',
-        input: 'rgba(191,193,201,0.12)',
-        hover: 'linear-gradient(270deg, #131628 0%, #27141C 100%);',
+        primary: '#141312',
+        secondary: '#1b1a19',
+        tertiary: '#22211f',
+        border: '#2a2927',
+        inset: '#0f0e0d',
+        input: '#1b1a19',
+        hover: '#1f1e1c',
     },
     text: {
-        primary: `var(--white20)`,
-        secondary: 'rgba(255,255,255,0.3)',
-        tertiary: '#a9abb6',
-        quarternary: '#6c6f7e',
-        placeholder: 'rgba(145,148,161,0.5)',
-        onPrimary: '#050505',
+        primary: '#f4f1ea',
+        secondary: '#c9c5bc',
+        tertiary: '#a9a39a',
+        quarternary: '#7f7b73',
+        placeholder: '#8f8b82',
+        onPrimary: '#11100f',
     },
     img: {
         filter: 'invert(1)'
+    },
+    accent: {
+        primary: '#7b5cc3',
+        soft: '#2a2238',
+        contrast: '#fcc314',
     },
     // ...
 }
@@ -58,10 +68,10 @@ const defaultTheme = {
     ],
     fontWeights: {
         body: 400,
-        subheading: 500,
+        subheading: 400,
         link: 600,
-        bold: 700,
-        heading: 800,
+        bold: 600,
+        heading: 600,
     },
     lineHeights: {
         body: 1.5,
